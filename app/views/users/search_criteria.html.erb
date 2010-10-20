@@ -1,0 +1,22 @@
+<%  form_for :user, :url => save_search_criteria_users_path do |f| %>
+<p>Are you peculiar about Religion?
+<%= f.select :search_religion, User::Search_religion::SEARCH_RELIGION_SELECT,{:include_blank => true} %>
+</p>
+<p>Are you looking for a peculiar cast?
+<%= f.select :search_cast, User::Search_cast::SEARCH_CAST_SELECT,{:include_blank => true} %>
+</p>
+<p>Any suggestions about subcast?
+ <%= f.select :search_subcast, User::Search_subcast::SEARCH_SUBCAST_SELECT,{:include_blank => true} %>
+</p>
+<p>Are you are looking for a particular jobbed one?
+  <%= f.select :search_job, User::Search_job::SEARCH_JOB_SELECT,{:include_blank => true} %>
+</p>
+<p>
+  What should be the mothertongue?
+  <%= f.select :search_mothertongue, User::Search_mothertongue::SEARCH_MOTHERTONGUE_SELECT,{:include_blank => true} %>
+</p>
+<p>
+  <%= f.submit "Submit" %>
+</p>
+<% end %>
+     

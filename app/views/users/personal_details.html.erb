@@ -1,0 +1,91 @@
+<div>
+  
+<% form_for :user , :url => save_personal_details_users_path, :html => {:multipart => true} do |f| %>
+  <table style="max-height:5px">
+        <tr>
+      <td<p> <%= f.label 'name' %></p> </td>
+      <td><p <%= f.text_field :name %></p></td>
+
+  </tr>
+    <tr>
+      <td<p> <%= f.label 'address' %></p> </td>
+      <td><p <%= f.text_field :address %></p></td>
+     
+  </tr>
+  <tr>
+    <td><p> <%= f.label "Date of birth" %></p></td>
+    <td<p><%= f.date_select :dateofbirth, :start_year => 1950, :end_year => 2050,:order => [:day , :month , :year],:include_blank => true%></p></td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label 'sex' %>
+    </td>
+    <td>
+        <%=  f.radio_button :sex, "Male" %>Male
+        <%= f.radio_button :sex, "Female" %>Female
+    </td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'Occupation'%> </p></td>
+    <td<p> <%= f.select :search_job, User::Search_job::SEARCH_JOB_SELECT,{:include_blank => true} %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'salary'%> </p></td>
+    <td<p><%= f.text_field :salary %></p></td>   
+  </tr>
+  <tr>
+    <td><p> <%= f.label "father's name"%> </p></td>
+    <td<p><%= f.text_field :father %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label "mother's name"%> </p></td>
+    <td<p><%= f.text_field :mother %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label "father's job"%> </p></td>
+    <td<p><%= f.text_field :father_job %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label "mother's job"%> </p></td>
+    <td<p><%= f.text_field :mother_job %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'sibblings'%> </p></td>
+    <td<p><%= f.text_field :siblings %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'mothertongue'%> </p></td>
+    <td<p> <%= f.select :search_mothertongue, User::Search_mothertongue::SEARCH_MOTHERTONGUE_SELECT,{:include_blank => true} %>
+      </p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'height'%> </p></td>
+    <td<p><%= f.text_field :height %></p></td>
+  </tr>
+    <tr>
+    <td><p> <%= f.label 'weight'%> </p></td>
+    <td<p><%= f.text_field :weight %></p></td>
+  </tr>
+  <tr>
+    <td>
+    <%= f.label 'Religion' %>
+    <%= f.select :religion, User::Religion::RELIGION_SELECT,{ :include_blank => true} %>
+                
+    <%= f.label 'Cast' %>
+    <%=  f.select :cast, User::Cast::CAST_SELECT,{ :include_blank => true}  %>
+    </td>
+  </tr>
+    <tr>
+    <td>
+    <%= f.file_field :photo %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= f.submit "Save" %></td>
+
+  </tr>
+  </table>
+    
+<%end%>
+</div>

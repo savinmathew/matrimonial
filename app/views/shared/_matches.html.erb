@@ -1,0 +1,100 @@
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $("#contact_link").click(function(event){
+      $("#contact_details").show();
+      event.preventDefault();
+      $(this).hide();
+     });
+
+    $("#search_change").click(function(event){
+      $("#search_options").show();
+      event.preventDefault();
+    });
+
+    });
+    </script>
+
+
+<div id="search_options" style="display: none">
+  <%  form_for :user, :url => save_search_criteria_users_path do |f| %>
+<p>Are you peculiar about Religion?
+<%= f.select :search_religion, User::Search_religion::SEARCH_RELIGION_SELECT,{:include_blank => true} %>
+</p>
+<p>Are you looking for a peculiar cast?
+<%= f.select :search_cast, User::Search_cast::SEARCH_CAST_SELECT,{:include_blank => true} %>
+</p>
+<p>Any suggestions about subcast?
+ <%= f.select :search_subcast, User::Search_subcast::SEARCH_SUBCAST_SELECT,{:include_blank => true} %>
+</p>
+<p>Are you are looking for a particular jobbed one?
+  <%= f.select :search_job, User::Search_job::SEARCH_JOB_SELECT,{:include_blank => true} %>
+</p>
+<p>
+  What should be the mothertongue?
+  <%= f.select :search_mothertongue, User::Search_mothertongue::SEARCH_MOTHERTONGUE_SELECT,{:include_blank => true} %>
+</p>
+<p>
+  <%= f.submit "Submit" %>
+</p>
+<% end %>
+
+</div>
+<div id="search_results">
+<table>
+  <tr>
+    <td>
+<p>
+  Name:<%= matches.name %>
+</p>
+<p>
+  Date Of Birth:<%= matches.dateofbirth %>
+</p>
+<p>
+  Caste:<%=  User::Cast::CAST_LIST[matches.cast]%>
+</p>
+<p>
+  Subcaste: <%= matches.subcast %>
+</p>
+
+<p>
+  Job: <%= matches.job %>
+</p>
+<p>
+  Salary: <%= matches.salary %>
+</p>
+<p>
+  Father: <%= matches.father %>
+</p>
+<p>
+  Mother: <%= matches.mother %>
+</p>
+<p>
+  Siblings: <%= matches.siblings %>
+</p>
+<p>
+  Height: <%= matches.height %>
+</p>
+<p>
+  Weight: <%= matches.weight %>
+</p>
+<div id=" contacting_div" class="contact">
+  <p id="contact_link"class="contact">
+  <%= link_to"Contact Her"  %>
+</p>
+<div id ="contact_details" class="contact" style="display:none">
+<p>Address:<%= matches.address %></p>
+<p>Email:<%= matches.email %></p>
+</div>
+
+
+</div>
+
+    </td>
+    <td>
+      <%= image_tag matches.photo.url(:medium) %>
+    </td>
+  </tr>
+</table>
+</div>
+
+

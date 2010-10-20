@@ -1,0 +1,13 @@
+
+<%@mate.each do |m|%>
+<% @user = current_user %>
+<% if m.sex=="Female"%>
+<% if @user.dateofbirth < (m.dateofbirth - 1)  %>
+<%= render :partial => "/shared/matches", :object => m %>
+<% end %>
+<%else%>
+<% if @user.dateofbirth > (m.dateofbirth )  %>
+<%= render :partial => "/shared/matches", :object => m %>
+<% end %>
+<% end %>
+<%end%>
